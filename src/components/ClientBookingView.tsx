@@ -153,7 +153,7 @@ export const ClientBookingView: React.FC = () => {
         <div className="bg-gradient-to-b from-black via-zinc-950 to-[#121215] p-6 sm:p-8 text-center relative overflow-hidden border-b border-zinc-800">
           <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 rounded-3xl bg-black border-2 border-[#d4af37] p-1 shadow-xl shadow-amber-500/10 overflow-hidden flex items-center justify-center">
             <img
-              src="/logo-elite96.png"
+              src="./logo-elite96.png"
               alt="Elite 96 Logo"
               className="w-full h-full object-cover scale-110"
               onError={(e) => {

@@ -121,8 +121,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [currentRole, setCurrentRole] = useState<UserRole | null>(() => {
     if (isClientRoute) return 'cliente';
     const saved = localStorage.getItem(STORAGE_KEYS.ROLE);
-    if (saved === 'admin' || saved === 'configuracao') return saved;
-    return null;
+    if (saved === 'admin' || saved === 'configuracao' || saved === 'cliente') return saved as UserRole;
+    return 'admin';
   });
 
   const [security, setSecurity] = useState<AccessSecurity>(() => {
@@ -504,6 +504,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setRole = (role: UserRole | null) => {
     setCurrentRole(role);
+    if (role) {
+      localStorage.setItem(STORAGE_KEYS.ROLE, role);
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.ROLE);
+    }
   };
 
   const updateSecurityPins = (adminPin: string, techPin: string) => {
@@ -568,6 +573,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const resetToDemoData = () => {
+    localStorage.clear();
     setProfile(defaultProfile);
     setWhatsAppConfig(defaultWhatsAppConfig);
     setServices(defaultServices);
@@ -577,7 +583,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setClients(defaultClients);
     setSubscriptionPlans(defaultSubscriptionPlans);
     setSecurity(defaultSecurity);
-    localStorage.clear();
+    setCurrentRole('admin');
   };
 
   return (

@@ -11,6 +11,8 @@ import { ClientBookingView } from './components/ClientBookingView';
 import { TechnicalConfigView } from './components/TechnicalConfigView';
 import { LoginView } from './components/LoginView';
 
+import { DemoBanner } from './components/DemoBanner';
+
 const MainLayout: React.FC = () => {
   const { activeTab, currentRole, setRole } = useApp();
   const [currentPath, setCurrentPath] = useState(() => 
@@ -35,10 +37,11 @@ const MainLayout: React.FC = () => {
     currentPath.includes('/cliente') ||
     (typeof window !== 'undefined' && window.location.search.toLowerCase().includes('view=cliente'));
 
-  // 1. If path is /agendar or currentRole is 'cliente' -> Show standalone Customer Portal
+  // 1. If path is /agendar or currentRole is 'cliente' -> Show standalone Customer Portal with DemoBanner
   if (isClientPath || currentRole === 'cliente') {
     return (
       <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-[#d4af37] selection:text-black">
+        <DemoBanner />
         <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <ClientBookingView />
         </main>
@@ -46,14 +49,22 @@ const MainLayout: React.FC = () => {
     );
   }
 
-  // 2. If not logged in -> Show Login View
+  // 2. If not logged in -> Show Login View with DemoBanner
   if (!currentRole) {
-    return <LoginView />;
+    return (
+      <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-[#d4af37] selection:text-black">
+        <DemoBanner />
+        <main className="flex-1">
+          <LoginView />
+        </main>
+      </div>
+    );
   }
 
   // 3. Logged in as 'admin' or 'configuracao' -> Show Full Management Platform
   return (
     <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-[#d4af37] selection:text-black">
+      <DemoBanner />
       <Header />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 pb-24 lg:pb-8">

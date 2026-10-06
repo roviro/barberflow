@@ -66,7 +66,7 @@ export const defaultProfile: BarberProfile = {
   openingTime: '08:00',
   closingTime: '20:00',
   intervalMinutes: 30,
-  logoUrl: '/logo-elite96.png',
+  logoUrl: './logo-elite96.png',
 };
 
 export const defaultServices: ServiceItem[] = [

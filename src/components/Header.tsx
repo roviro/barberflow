@@ -85,7 +85,7 @@ export const Header: React.FC = () => {
             >
               <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-black border border-[#d4af37]/70 p-0.5 overflow-hidden shadow-md shadow-amber-500/10 flex items-center justify-center shrink-0 group-hover:border-[#f3e5ab] transition-all">
                 <img
-                  src="/logo-elite96.png"
+                  src="./logo-elite96.png"
                   alt="Elite 96"
                   className="w-full h-full object-cover scale-110"
                   onError={(e) => {

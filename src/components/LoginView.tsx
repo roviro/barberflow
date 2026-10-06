@@ -65,7 +65,7 @@ export const LoginView: React.FC = () => {
         <div className="text-center space-y-3">
           <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-3xl bg-black border-2 border-[#d4af37]/80 p-1 shadow-2xl shadow-amber-500/20 flex items-center justify-center overflow-hidden">
             <img
-              src="/logo-elite96.png"
+              src="./logo-elite96.png"
               alt="Elite 96 Barbearia"
               className="w-full h-full object-cover scale-110"
               onError={(e) => {
@@ -92,10 +92,27 @@ export const LoginView: React.FC = () => {
         {/* Profile Card */}
         <div className="bg-[#121215] border border-[#27272a] rounded-3xl p-6 sm:p-7 shadow-2xl space-y-6">
           
+          {/* Quick Demo Access Button */}
+          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-[#d4af37]/10 to-amber-500/15 border border-[#d4af37]/40 text-center space-y-2">
+            <div className="text-xs text-[#f3e5ab] font-bold flex items-center justify-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>Modo Demonstração Ativo</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setRole('admin')}
+              className="w-full py-2.5 bg-gradient-to-r from-[#c59b27] via-[#f3e5ab] to-[#c59b27] text-slate-950 font-black rounded-xl text-xs sm:text-sm hover:brightness-110 shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all"
+            >
+              <Scissors className="w-4 h-4" />
+              <span>Entrar como Barbeiro/Admin (1 Clique)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+
           {/* Profile Switcher Tabs */}
           <div>
             <label className="block text-[11px] font-black uppercase tracking-wider text-zinc-400 mb-2">
-              Selecione seu Perfil de Acesso
+              Ou selecione para acessar com PIN:
             </label>
             <div className="grid grid-cols-2 gap-2 bg-[#18181b] p-1.5 rounded-2xl border border-zinc-800">
               <button
